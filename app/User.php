@@ -11,6 +11,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $table = "users";
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -23,4 +24,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function books() {
+        return $this->belongsToMany('App\Book', 'user_books', 'user_id', 'book_id')->withPivot('id');
+    }
 }

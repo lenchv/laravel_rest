@@ -15,7 +15,15 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->safeEmail,
-        'password' => bcrypt(str_random(10)),
-        'remember_token' => str_random(10),
+        'password' => bcrypt("qwerty")
+    ];
+});
+
+$factory->define(App\Book::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->word,
+        'author' => $faker->firstName(),
+        'year' => $faker->numberBetween($min = 1880, $max = 2016),
+        'genre' => $faker->word,
     ];
 });
